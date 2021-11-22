@@ -1,4 +1,4 @@
-Download file at URL resuming when interrupted.
+Download file at URL resuming when interrupted. Adapted from Go in Practice, technique 50.
 
 ```
 go build -o download main.go

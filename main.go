@@ -1,5 +1,3 @@
-// Download file at URL resuming when interrupted.
-// Technique 50 from Go in Practice.
 package main
 
 import (
@@ -94,7 +92,7 @@ func download(URL string, file *os.File, retries int) error {
 	}
 
 	if res.StatusCode/100 != 2 {
-		if res.Header.Get("Content-Length") == "0" { // file already fully donwloaded
+		if res.StatusCode == 416 && res.Header.Get("Content-Length") == "0" { // file already fully donwloaded
 			return nil
 		} else {
 			return fmt.Errorf("GET %s: %s", URL, res.Status)
